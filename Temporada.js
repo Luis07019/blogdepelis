@@ -7,4 +7,4 @@ let open = Temporada["open"];
 let close = Temporada["close"];
 
 
-document.write(frase)
+document.write(Tfrase)
