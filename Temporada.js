@@ -5,6 +5,6 @@ close: "",
 
 let open = Temporada["open"];
 let close = Temporada["close"];
-
+let Tfrase = `${open}`;
 
 document.write(Tfrase)
