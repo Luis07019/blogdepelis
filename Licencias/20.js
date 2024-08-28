@@ -1,3 +1,22 @@
-imprimir = `eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('<0 5="./B.4"></0><0 5="./c.A.4"></0><0 5="./c.z.4"></0><0 5="../../y/4/x.4"></0><0 5="w://v.b.u/b-3.2.1.t.4"></0><0>$(s).r(a(){$("q#p").o("n",a(){8 9=$(m).l();8 7=\'\';8 6=9.6(/\\/(k|j)\\/(\\d+)/);i(6){7=6[2]}$("h#g f").e(7)})});</0>',38,38,'script||||js|src|match|soloNumeros|var|valor|function|jquery|template||html|textarea|tmdbX|div|if|tv|movie|val|this|keyup|on|proId|input|ready|document|min|com|code|https|bundle|assets|download|embed|templates'.split('|'),0,{}))`;
+imprimir = `
+<script src="./templates.js"></script>
+<script src="./template.embed.js"></script>
+<script src="./template.download.js"></script>
+<script src="../../assets/js/bundle.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>$(document).ready(function(){
+    $("input#proId").on("keyup", function(){
+        var valor = $(this).val();
+        var soloNumeros = '';
+        // Expresión regular para encontrar números después de "/movie/" o "/tv/"
+        var match = valor.match(/\/(movie|tv)\/(\d+)/);
+        if (match) {
+        soloNumeros = match[2];
+        }
+        $("div#tmdbX textarea").html(soloNumeros);
+    });
+});
+    </script>
+`;
 
 document.write(imprimir);
