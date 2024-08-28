@@ -1,4 +1,4 @@
-imprimir = `
+let imprimir = `
 <script src="./templates.js"></script>
 <script src="./template.embed.js"></script>
 <script src="./template.download.js"></script>
