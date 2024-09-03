@@ -1,4 +1,3 @@
-
 <script type='text/javascript'> width='100%', height='100%', id='liga1max';</script><script type='text/javascript' src='https://embed.sdfgnksbounce.com/embed.js'></script>
 <script type='text/javascript'> width='100%', height='100%', id='daznf1';</script><script type='text/javascript' src='https://embed.sdfgnksbounce.com/embed.js'></script>
 <script type='text/javascript'> width='100%', height='100%', id='daznlaliga';</script><script type='text/javascript' src='https://embed.sdfgnksbounce.com/embed.js'></script>
