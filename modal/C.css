@@ -1,0 +1,15 @@
+<style>
+/*<![CDATA[*/
+.mdlc {
+    --bg-overlay: rgba(0,0,0, .5);
+    --color: #007aff;
+    --color-rgb: 0, 122, 255;
+    --text: #1e2747;
+    --text-contrast: #8da0bc;
+    --w-container: 720px;
+}
+.mdlc {z-index: 999999;}
+.mdlc button {border: 0;outline: 0;cursor: pointer;}
+.mdlc__content,.mdlc__header{border-bottom:1px solid rgba(0,0,0,.1)}.mdlc{position:fixed;left:0;top:0;background-color:var(--bg-overlay);width:100%;height:100%;display:none;grid-template-columns:repeat(1,minmax(0,1fr));overflow:auto;padding:1rem;opacity:0}.mdlc.is-visible{display:grid;animation:.3s forwards mdlc_in}.mdlc.is-visible .mdlc__wrapper{animation:.3s .2s forwards mdlc_in_scale}.mdlc__wrapper{background:#fff;width:95%;max-width:var(--w-container);margin:auto;border-radius:.5rem;height:auto;max-height:100%;opacity:0;transform-origin:center top}.mdlc__header{padding:2rem;display:flex;align-items:center;gap:1rem;color:var(--text)}.mdlc__header h2{margin:0;overflow:auto;white-space:nowrap;font-weight:400;font-size:24px}.mdlc__header span{background:rgba(var(--color-rgb),.1);color:var(--color);width:60px;height:60px;display:grid;place-content:center;border-radius:50%}.mdlc__header span svg{width:24px;height:24px}.mdlc__content{padding:2rem 2rem 1rem}.mdlc__content p{color:var(--text-contrast);font-size:16px;margin-bottom:1rem!important}.mdlc__content ul{color:var(--text-contrast);list-style:disc;padding-left:1rem;margin-bottom:1rem}.mdlc__action{padding:2rem;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem}.mdlc__action button{width:100%;background-color:rgba(var(--color-rgb),.1);color:var(--color);padding:.75rem 1rem;border-radius:999px}.mdlc__action button.mark{background-color:var(--color);color:#fff}.mdlc__action button:hover{animation:.3s btn_scale}@keyframes btn_scale{from,to{scale:1}50%{scale:1.05}}@keyframes mdlc_in{from{opacity:0}to{opacity:1}}@keyframes mdlc_in_scale{from{scale:0.95;opacity:0}to{scale:1;opacity:1}}/* -- */@media (max-width: 576px) {.mdlc__header {padding: 1rem;}.mdlc__content {padding: 1rem;}.mdlc__header span {width: 50px;height:48px;}.mdlc__header h2 {font-size: 20px;margin: 0;}}
+/*]]>*/
+</style>
