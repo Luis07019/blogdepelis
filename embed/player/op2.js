@@ -1,97 +1,143 @@
+// Definición de la clase myPlayerClass
 class myPlayerClass {
-    constructor(e, r, l) {
-        this.playerData = e,
-        this.langs = r,
-        this.cyberlockers = l,
-        this.processFinalPlayer()
+    // Constructor que recibe los datos del reproductor, los idiomas y los cyberlockers
+    constructor(playerData, langs, cyberlockers) {
+        this.playerData = playerData;  // Datos del reproductor
+        this.langs = langs;            // Configuración de idiomas
+        this.cyberlockers = cyberlockers;  // Configuración de cyberlockers
+        this.processFinalPlayer();  // Llama al método que procesa el reproductor final
     }
-    getLangConfig(e, r = null) {
-        return this.getObjectConfig(this.langs, e, r)
+
+    // Obtiene la configuración de un idioma específico
+    getLangConfig(langName, property = null) {
+        return this.getObjectConfig(this.langs, langName, property);
     }
-    getCyberlockersConfig(e, r = null) {
-        return this.getObjectConfig(this.cyberlockers, e, r)
+
+    // Obtiene la configuración de un cyberlocker específico
+    getCyberlockersConfig(cyberlockerName, property = null) {
+        return this.getObjectConfig(this.cyberlockers, cyberlockerName, property);
     }
-    getObjectConfig(e, r, l = null) {
-        let a = e.find(e => e.name == r);
-        if (a || (a = e.find(e => !0 === e.
-    default)), !a) throw Error("Bad Config");
-        return l ? a[l]:
-        a
+
+    // Obtiene la configuración de un objeto (idioma o cyberlocker) por nombre
+    getObjectConfig(configArray, name, property = null) {
+        let config = configArray.find(config => config.name == name);  // Busca la configuración por nombre
+        if (!config) config = configArray.find(config => config.default === true);  // Usa la configuración por defecto si no se encuentra
+        if (!config) throw Error("Bad Config");  // Lanza un error si no se encuentra ninguna configuración
+        return property ? config[property] : config;  // Devuelve la configuración completa o solo una propiedad
     }
+
+    // Ordena los idiomas según la propiedad de prioridad
     orderLangs() {
-        this.langs = this.langs.sort(this.orderByPriorityProperty)
+        this.langs = this.langs.sort(this.orderByPriorityProperty);
     }
-    orderByPriorityProperty(e, r) {
-        let l = e.priority,
-        a = r.priority;
-        return l == a ? 0 : l > a ? 1 : -1
+
+    // Compara dos objetos según su prioridad
+    orderByPriorityProperty(a, b) {
+        let priorityA = a.priority;
+        let priorityB = b.priority;
+        return priorityA === priorityB ? 0 : (priorityA > priorityB ? 1 : -1);
     }
-    removerDisplayFalseCyberlockers(e) {
-        return e.filter(e => !0 === this.getCyberlockersConfig(e.cyberlocker, "display"))
+
+    // Remueve los cyberlockers cuya propiedad "display" es falsa
+    removerDisplayFalseCyberlockers(data) {
+        return data.filter(item => this.getCyberlockersConfig(item.cyberlocker, "display") === true);
     }
-    groupByVisibleLangs(e) {
-        let r = {};
-        return this.langs.forEach(function(e) { ! 0 === e.display && (r[e.name] = [])
-        }),
-        e.forEach(function(e) {
-            r[e.language] && r[e.language].push(e)
-        }),
-        r
-    }
-    orderPlayer(e) {
-        for (let r in  e) {
-            if (0 === e[r].length) {
-                delete e[r];
-                continue
+
+    // Agrupa los datos del reproductor por los idiomas visibles
+    groupByVisibleLangs(data) {
+        let grouped = {};
+        this.langs.forEach(lang => {
+            if (lang.display === true) {
+                grouped[lang.name] = [];  // Crea una entrada en el grupo para cada idioma visible
             }
-            e[r] = e[r].sort((e, r) => {
-                let l = this.getCyberlockersConfig(e.cyberlocker, "priority"),
-                a = this.getCyberlockersConfig(r.cyberlocker, "priority");
-                return l == a ? 0 : l > a ? 1 : -1
-            })
-        }
-        return e
+        });
+        data.forEach(item => {
+            if (grouped[item.language]) {
+                grouped[item.language].push(item);  // Añade los datos al grupo correspondiente por idioma
+            }
+        });
+        return grouped;
     }
+
+    // Ordena los datos del reproductor según la prioridad de los cyberlockers
+    orderPlayer(groupedData) {
+        for (let lang in groupedData) {
+            if (groupedData[lang].length === 0) {
+                delete groupedData[lang];  // Elimina el idioma si no tiene datos
+                continue;
+            }
+            groupedData[lang] = groupedData[lang].sort((a, b) => {
+                let priorityA = this.getCyberlockersConfig(a.cyberlocker, "priority");
+                let priorityB = this.getCyberlockersConfig(b.cyberlocker, "priority");
+                return priorityA === priorityB ? 0 : (priorityA > priorityB ? 1 : -1);
+            });
+        }
+        return groupedData;
+    }
+
+    // Procesa el reproductor final aplicando todas las transformaciones
     processFinalPlayer() {
-        let e;
-        this.orderLangs(),
-        e = this.removerDisplayFalseCyberlockers(this.playerData),
-        e = this.groupByVisibleLangs(e),
-        e = this.orderPlayer(e),
-        this.finalPlayer = e
+        this.orderLangs();  // Ordena los idiomas
+        let filteredData = this.removerDisplayFalseCyberlockers(this.playerData);  // Filtra los cyberlockers no visibles
+        filteredData = this.groupByVisibleLangs(filteredData);  // Agrupa los datos por idioma visible
+        this.finalPlayer = this.orderPlayer(filteredData);  // Ordena el reproductor final
     }
+
+    // Devuelve el reproductor final procesado
     getFinalPlayer() {
-        return this.finalPlayer
+        return this.finalPlayer;
     }
 }
-function getQueryStringParameter(e) {
-    return new URLSearchParams(window.location.search).get(e)
+
+// Función que obtiene parámetros de la URL
+function getQueryStringParameter(param) {
+    return new URLSearchParams(window.location.search).get(param);
 }
-var myPlayer = new myPlayerClass(player, langs, cyberlockers),
-playerData = myPlayer.finalPlayer,
-player_base_url = "";
-$(document).ready(function() { ! function e(r) {
-        Object.keys(r).forEach(e => {
-            let l = myPlayer.getLangConfig(e, "icon");
-            $(".langclass").append('<li id="li-' + e + '" onclick="SelLang(this, \'' + e + '\');"><img src="https://plantillasplus.com/Imagenes/player/' + l + '"></li>'),
-            $(".cyberlockerClass").append('<div class="OD OD_' + e + '"></div>'),
-            r[e].forEach(r => {
-                let l = myPlayer.getCyberlockersConfig(r.cyberlocker, "icon");
-                $(".OD_" + e).append("<li onclick=\"go_to_player('" + r.link + '\')"><img src="https://plantillasplus.com/Imagenes/player/' + l + '"><span>' + r.cyberlocker + "</span><p>Audio: " + r.language + " - Calidad: " + r.quality + "</p></li>")
-            })
-        })
-    } (playerData),
-    $(".langclass li:first").addClass("SLD_A"),
-    $(".cyberlockerClass div:first").addClass("REactiv"),
-    function e() {
-        let r = getQueryStringParameter("selectedLang");
-        if (["Ingles", "Espa\xf1ol-Latino", "Espa\xf1ol", "Japones"].includes(r)) {
-            var l;
-            l = r,
-            $(".SelectLangDisp li").removeClass("SLD_A"),
-            $("#li-" + l).addClass("SLD_A"),
-            $(".cyberlockerClass div").removeClass("REactiv"),
-            $(".cyberlockerClass .OD_" + l).addClass("REactiv")
+
+// Crea una instancia de myPlayerClass con los datos necesarios
+var myPlayer = new myPlayerClass(player, langs, cyberlockers);
+var playerData = myPlayer.finalPlayer;
+var player_base_url = "";
+
+// Al cargar el documento, se inicializan los elementos del reproductor
+$(document).ready(function () {
+    // Función que genera el reproductor basado en los datos procesados
+    (function generatePlayerUI(playerData) {
+        // Recorre los idiomas disponibles
+        Object.keys(playerData).forEach(lang => {
+            let langIcon = myPlayer.getLangConfig(lang, "icon");  // Obtiene el ícono del idioma
+            $(".langclass").append(
+                '<li id="li-' + lang + '" onclick="SelLang(this, \'' + lang + '\');">' +
+                '<img src="https://plantillasplus.com/Imagenes/player/' + langIcon + '">' +
+                '</li>'
+            );
+            $(".cyberlockerClass").append('<div class="OD OD_' + lang + '"></div>');
+            // Recorre los cyberlockers disponibles para cada idioma
+            playerData[lang].forEach(item => {
+                let cyberlockerIcon = myPlayer.getCyberlockersConfig(item.cyberlocker, "icon");
+                $(".OD_" + lang).append(
+                    "<li onclick=\"go_to_player('" + item.link + "')\">" +
+                    '<img src="https://plantillasplus.com/Imagenes/player/' + cyberlockerIcon + '">' +
+                    '<span>' + item.cyberlocker + '</span>' +
+                    '<p>Audio: ' + item.language + ' - Calidad: ' + item.quality + '</p>' +
+                    '</li>'
+                );
+            });
+        });
+    })(playerData);
+
+    // Establece el primer idioma y cyberlocker como seleccionados por defecto
+    $(".langclass li:first").addClass("SLD_A");
+    $(".cyberlockerClass div:first").addClass("REactiv");
+
+    // Cambia de idioma si hay un idioma seleccionado en la URL
+    (function selectLangFromURL() {
+        let selectedLang = getQueryStringParameter("selectedLang");
+        if (["Ingles", "Español-Latino", "Español", "Japones"].includes(selectedLang)) {
+            $(".SelectLangDisp li").removeClass("SLD_A");
+            $("#li-" + selectedLang).addClass("SLD_A");
+            $(".cyberlockerClass div").removeClass("REactiv");
+            $(".cyberlockerClass .OD_" + selectedLang).addClass("REactiv");
         }
-    } ()
+    })();
 });
