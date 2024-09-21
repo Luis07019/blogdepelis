@@ -1,4 +1,4 @@
-// Definición de la clase myPlayerClass
+// Definición de la clase myPlayerClass 
 class myPlayerClass {
     // Constructor que recibe los datos del reproductor, los idiomas y los cyberlockers
     constructor(playerData, langs, cyberlockers) {
@@ -108,7 +108,7 @@ $(document).ready(function () {
             let langIcon = myPlayer.getLangConfig(lang, "icon");  // Obtiene el ícono del idioma
             $(".langclass").append(
                 '<li id="li-' + lang + '" onclick="SelLang(this, \'' + lang + '\');">' +
-                '<img src="https://plantillasplus.com/Imagenes/player/' + langIcon + '">' +
+                '<img src="https://urlx.plantillasseo.online/static/server/' + langIcon + '">' +
                 '</li>'
             );
             $(".cyberlockerClass").append('<div class="OD OD_' + lang + '"></div>');
@@ -117,7 +117,7 @@ $(document).ready(function () {
                 let cyberlockerIcon = myPlayer.getCyberlockersConfig(item.cyberlocker, "icon");
                 $(".OD_" + lang).append(
                     "<li onclick=\"go_to_player('" + item.link + "')\">" +
-                    '<img src="https://plantillasplus.com/Imagenes/player/' + cyberlockerIcon + '">' +
+                    '<img src="https://urlx.plantillasseo.online/static/server/' + cyberlockerIcon + '">' +
                     '<span>' + item.cyberlocker + '</span>' +
                     '<p>Audio: ' + item.language + ' - Calidad: ' + item.quality + '</p>' +
                     '</li>'
