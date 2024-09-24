@@ -41,4 +41,16 @@ let salto = lXpro["salto"];
 let parrafoE = lXpro["parrafoE"];
 let parrafoS = lXpro["parrafoS"];
 let tmdbI = lXpro["tmdbI"];
-document.write(eLive)
+
+let eLive = `${parrafoE}
+{"cyberlocker": "GDrive XPRO","link":"${embedXpro}${fechaXpro}${tmdbI}${htmlXpro}","language": "Español-Latino", "quality": "HD"},${salto}
+{"cyberlocker": "Playhublite","link":"${Playhublite}${tmdbI}","language": "Español-Latino", "quality": "HD"},${salto}
+{"cyberlocker": "Multiembed","link":"${Multiembed}${tmdbI}${Multiembed0}","language": "Ingles", "quality": "HD"},${salto}
+{"cyberlocker": "Vidsrc","link":"${Vidsrc}${tmdbI}","language": "Español-Latino", "quality": "HD"},${salto}
+{"cyberlocker": "Vidsrc","link":"${Vidsrc}${tmdbI}","language": "Ingles", "quality": "HD"},${salto}
+{"cyberlocker": "Superflixapi","link":"${Superflixapi}${tmdbI}","language": "Ingles", "quality": "HD"},${salto}
+{"cyberlocker": "Frembed","link":"${Frembed}${tmdbI}","language": "Frances", "quality": "HD"},${salto}
+{"cyberlocker": "Moviesapi","link":"${Moviesapi}${tmdbI}","language": "Ingles", "quality": "HD"},${salto}
+{"cyberlocker": "Rivestream","link":"${Rivestream}${tmdbI}","language": "Ingles", "quality": "HD"},
+${parrafoS}`;
+document.write(eLive);
