@@ -32,8 +32,8 @@ let gdXpro = {
     
 let lXpro = {
     salto:"<br>",
-    parrafoE:"<p>",
-    parrafoS:"</p>",
+    parrafoE:"<script>",
+    parrafoS:"</script>",
     tmdbI:"840705",
 };
 
