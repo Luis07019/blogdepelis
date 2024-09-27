@@ -1,4 +1,4 @@
-var BloggerSection=function(m) {
+var PruebaJS=function(m) {
     "use strict";
     function d(e,t,n,r) {
         let o=document.createElement("script"),i=`$ {
