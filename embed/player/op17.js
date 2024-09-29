@@ -4,7 +4,7 @@
     displayVideo.style.zIndex = "9999";
     displayVideo.innerHTML = `
     <span onclick="listPlayer();">
-        <img src="https://github.com/Luis07019/blogdepelis/blob/main/embed/static/server/back.png">
+        <img src="https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@main/embed/static/server/back.png">
     </span>
     <iframe id="IFR" src="` + url + `" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>`;
 }
