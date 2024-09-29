@@ -108,7 +108,7 @@ $(document).ready(function () {
             let langIcon = myPlayer.getLangConfig(lang, "icon");  // Obtiene el ícono del idioma
             $(".langclass").append(
                 '<li id="li-' + lang + '" onclick="SelLang(this, \'' + lang + '\');">' +
-                '<img src="https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@tree/4e81dcfe4b353d81a6138973405118e5c5410e22/embed/static/server/' + langIcon + '">' +
+                '<img src="https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@tree/main/embed/static/server/' + langIcon + '">' +
                 '</li>'
             );
             $(".cyberlockerClass").append('<div class="OD OD_' + lang + '"></div>');
