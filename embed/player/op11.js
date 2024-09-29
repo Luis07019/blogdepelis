@@ -117,7 +117,7 @@ $(document).ready(function () {
                 let cyberlockerIcon = myPlayer.getCyberlockersConfig(item.cyberlocker, "icon");
                 $(".OD_" + lang).append(
                     "<li onclick=\"go_to_player('" + item.link + "')\">" +
-                    '<img src="https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@tree/4e81dcfe4b353d81a6138973405118e5c5410e22/embed/static/server/' + cyberlockerIcon + '">' +
+                    '<img src="https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@tree/main/embed/static/server/' + cyberlockerIcon + '">' +
                     '<span>' + item.cyberlocker + '</span>' +
                     '<p>Audio: ' + item.language + ' - Calidad: ' + item.quality + '</p>' +
                     '</li>'
