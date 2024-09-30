@@ -133,7 +133,7 @@ $(document).ready(function () {
     // Cambia de idioma si hay un idioma seleccionado en la URL
     (function selectLangFromURL() {
         let selectedLang = getQueryStringParameter("selectedLang");
-        if (["Ingles", "Español-Latino", "Español", "Japones"].includes(selectedLang)) {
+        if (["Ingles", "Español-Latino", "Español", "Japones", "Koreano", "Frances", "Portugues", "Argentino", "Colombiano", "Peruano", "Brasileño"].includes(selectedLang)) {
             $(".SelectLangDisp li").removeClass("SLD_A");
             $("#li-" + selectedLang).addClass("SLD_A");
             $(".cyberlockerClass div").removeClass("REactiv");
