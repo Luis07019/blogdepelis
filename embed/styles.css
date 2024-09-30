@@ -79,7 +79,7 @@ overflow: hidden;
 }
 #DisplayContent .FirstLoad:before{
     content:'';
-    background-image:url(https://plantillasplus.com/Imagenes/player/loading.gif);
+    background-image:url(https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@main/embed/XPRO/loading.gif);
     height:80px;
     width:80px;
     top:50%;
@@ -141,7 +141,7 @@ overflow: hidden;
 }
 #DisplayContent .BoxHumano:before{
     content:'';
-    background-image:url(https://plantillasplus.com/Imagenes/player/loading.gif);
+    background-image:url(https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@main/embed/XPRO/loading.gif);
     height:60px;
     width:60px;
     top:5px;
@@ -409,7 +409,7 @@ overflow: hidden;
 }
 #DisplayContent .DisplayVideo p:before{
     content:'';
-    background-image:url(https://plantillasplus.com/Imagenes/player/loading.gif);
+    background-image:url(https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@main/embed/XPRO/loading.gif);
     height:60px;
     width:60px;
     border-radius:100px;
@@ -424,7 +424,7 @@ overflow: hidden;
 }
 #DisplayContent .reAct:before{
     content:'';
-    background-image:url(https://plantillasplus.com/Imagenes/player/loading.gif);
+    background-image:url(https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@main/embed/XPRO/loading.gif);
     height:60px;
     width:60px;
     top:12px;
@@ -507,7 +507,7 @@ overflow: hidden;
     top:10px;
     right:10px;
     background-color:#ffffff2b;
-    background-image:url(https://plantillasplus.com/Imagenes/player/back.png);
+    background-image:url(https://cdn.jsdelivr.net/gh/Luis07019/blogdepelis@main/embed/static/server/back.png);
     width:35px;
     height:35px;
     background-repeat:no-repeat;
