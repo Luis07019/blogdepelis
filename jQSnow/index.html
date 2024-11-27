@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merry Christmas Snow Falling Effect Demo</title>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body{ height:100vh;}
+body { background-color:#0F8A5F;}
+h1 { margin:200px auto 50px auto; color:#fff; text-align:center; font-family:'Open Sans';}
+</style>
+</head>
+
+<body>
+<h1>Merry Christmas!</h1>
+<div class="jquery-script-ads" align="center"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+<script src="jquery.snow.js"></script>
+<script>
+var snowEffectInterval = jQuery.fn.snow({
+  // min size of element (default: 20)
+  minSize: 20,
+  
+  // max size of element (default: 50)
+  maxSize: 50,
+  
+  // flake fall time multiplier (default: 20)
+  fallTimeMultiplier: 20, 
+  
+  // flake fall time difference (default: 10000)
+  fallTimeDifference: 10000, 
+  
+  // interval (miliseconds) between new element spawns (default: 500)
+  spawnInterval: 100, 
+  
+  // jQuery element to apply snow effect on (should work on any block element) (default: body)
+  target: jQuery("body"),
+  
+  //elements to use in generating snow effect
+  elements	: [
+  
+    // Element #1
+    { 
+      // html element to be spawned for this element
+      html: '<i class="fa fa-snowflake-o" aria-hidden="true"></i>',
+      // hex color for this element - works only for font based icons
+      color: '#ffffff'
+    },
+    
+    // Element #2
+    { 
+      // html element to be spawned for this element
+      html: '<i class="fa fa-bell-o" aria-hidden="true"></i>',
+      // hex color for this element - works only for font based icons
+      color: '#ed9b40'
+    },
+    
+    // Element #3
+    { 
+      // html element to be spawned for this element
+      html: '<i class="fa fa-snowflake-o" aria-hidden="true"></i>',
+      // hex color for this element - works only for font based icons
+      color: '#ffffff'
+    },
+    
+    // Element #4
+    {
+      // html element to be spawned for this element
+      html: '<i class="fa fa-music" aria-hidden="true"></i>',
+      // hex color for this element - works only for font based icons
+      color: '#cc2037'
+    },
+    
+    // Element #5
+    { 
+      // html element to be spawned for this element
+      html: '<i class="fa fa-snowflake-o" aria-hidden="true"></i>',
+      // hex color for this element - works only for font based icons
+      color: '#ffffff'
+    },
+  ]
+});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
