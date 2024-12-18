@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Blog ID and License</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+    }
+    center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        margin-top: 1px;
+    }
+    input[type="text"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button.button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button.button:hover {
+        background-color: #45a049;
+    }
+    h3 {
+        margin: 20px 0;
+    }
+    a {
+        text-decoration: none;
+    }
+    @media screen and (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 14px;
+        }
+        button.button {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        h3 {
+            font-size: 18px;
+        }
+    }
+    .toastNotif {
+        position: fixed;
+        left: 50%;
+        bottom: -70px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #323232;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        border-radius: 3px;
+        padding: 13px 24px;
+        box-shadow: 0 5px 35px rgba(149, 157, 165, 0.3);
+        opacity: 0;
+        transform: translateX(-50%);
+        transition: all 0.5s ease;
+        z-index: 99981;
+    }
+    .toastNotif.show {
+        bottom: 20px;
+        opacity: 1;
+    }
+    .spinner {
+        display: none;
+        margin: 10px auto;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #4CAF50;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+
+<center>
+    <div class="container">
+        <div id="msg1"></div>
+        <input id="ens" type="text" placeholder="Website URL">
+        <input id="ens1" type="text" placeholder="License No." onkeypress="return isNumber(event)">
+        <button class="button" onclick="validateInputs()">Generate</button>
+        <button class="button" onclick="eraseText()">Clear</button>
+        <input type="text" id="blogid1" placeholder="Blog ID" readonly>
+        <div class="spinner" id="spinner"></div>
+        <button class="button" onclick="copyid()">Copy Blog ID</button>
+        <input type="text" id="license1" placeholder="Blog License" readonly>
+        <button class="button" onclick="copy1()">Copy License</button>
+        <!--[ Paste Your Google sheet Link in href '' ]-->
+        <a target='_blank' href='https://docs.google.com/spreadsheets/d/1sjgyjYUwQD-xvdm8791HY0_ngwYj4QlzfegQ6kjfaWE/edit?gid=0#gid=0'>
+            <button class="button" type="submit" id="btnSubmit">Add In Sheet</button>
+        </a>
+    </div>
+</center>
+
+<div id="toastNotif" class="toastNotif"></div>
+
+<script>
+    function validateInputs() {
+        var url = document.getElementById("ens").value;
+        var license = document.getElementById("ens1").value;
+        if (url === "") {
+            showNotification('Please provide the Website URL.');
+        } else if (license === "") {
+            showNotification('Please provide the License No.');
+        } else {
+            encrypt();
+        }
+    }
+
+    function encrypt() {
+        var text = document.getElementById("ens").value;
+        var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var passwordLength = 15;
+        var password = "";
+        for (var i = 0; i <= passwordLength; i++) {
+            var randomNumber = Math.floor(Math.random() * chars.length);
+            password += chars.substring(randomNumber, randomNumber + 1);
+        }
+        
+        document.getElementById("spinner").style.display = "block"; // Show spinner
+
+        $.ajax({
+            url: text + "/feeds/posts/summary/?alt=json",
+            type: "get",
+            dataType: "jsonp",
+            success: function(data) {
+                var dataID = data.feed.id.$t;
+                var IDblog = dataID.split('-');
+                var blogID = IDblog[1];
+                document.getElementById("blogid1").value = blogID;
+                document.getElementById("spinner").style.display = "none"; // Hide spinner
+            },
+            error: function() {
+                showNotification('Failed to fetch Blog ID.');
+                document.getElementById("spinner").style.display = "none"; // Hide spinner
+            }
+        });
+        
+        var text2 = document.getElementById("ens1").value;
+        var password1 = text2 + "-" + password;
+        document.getElementById("license1").value = password1;
+    }
+
+    function eraseText() {
+        document.getElementById("blogid1").value = "";
+        document.getElementById("license1").value = "";
+        document.getElementById("ens1").value = "";
+        document.getElementById("ens").value = "";
+    }
+
+    function copyid() {
+        let textarea = document.getElementById("blogid1");
+        textarea.select();
+        document.execCommand("copy");
+        showNotification('Blog ID has been copied to clipboard');
+    }
+
+    function copy1() {
+        let textarea1 = document.getElementById("license1");
+        textarea1.select();
+        document.execCommand("copy");
+        showNotification('License has been copied to clipboard');
+    }
+
+    function showNotification(message) {
+        const toast = document.getElementById('toastNotif');
+        toast.textContent = message;
+        toast.className = 'toastNotif show';
+        setTimeout(() => {
+            toast.className = 'toastNotif';
+        }, 2000);
+    }
+
+    function isNumber(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            showNotification('Only numbers are allowed in License No.');
+            evt.preventDefault();
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
