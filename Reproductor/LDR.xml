@@ -9,11 +9,11 @@
                     <Linear skipoffset="00:00:04">
                         <Duration>00:00:03</Duration>
                         <VideoClicks>
-                            <ClickThrough id="blog"><![CDATA[https://www.blogdepelis.info/]]></ClickThrough>
-                            <CustomClick>https://www.blogdepelis.info/</CustomClick>
+                            <ClickThrough id="blog"><![CDATA[https://plantillasseo.blogspot.com/]]></ClickThrough>
+                            <CustomClick>https://plantillasseo.blogspot.com/</CustomClick>
                         </VideoClicks>
                         <MediaFiles>
-                            <MediaFile id="3" delivery="progressive" type="video/mp4" scalable="1" maintainAspectRatio="1" codec="0" apiFramework="VAST"><![CDATA[https://github.com/NewCeodel2022/Sbstreamfono/raw/main/ads2.mp4]]></MediaFile>
+                            <MediaFile id="3" delivery="progressive" type="video/mp4" scalable="1" maintainAspectRatio="1" codec="0" apiFramework="VAST"><![CDATA[https://1a-1791.com/video/fwe1/61/s8/2/F/w/h/m/Fwhmw.haa.mp4]]></MediaFile>
                         </MediaFiles>
                     </Linear>
                 </Creative>
